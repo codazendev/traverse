@@ -11,7 +11,8 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink
     ${CMAKE_SOURCE_DIR}/compile_commands.json)
 
 # Engine library
-add_library(traverse)
+add_library(traverse
+    src/Logger.cpp)
 target_include_directories(traverse PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 # Sandbox testing executable
@@ -19,4 +20,6 @@ add_executable(sandbox
     sandbox/main.cpp)
 
 # Unit testing executable
-add_executable(test_traverse)
+add_executable(test_traverse
+    tests/Logger.test.cpp)
+target_link_libraries(test_traverse PRIVATE traverse)
