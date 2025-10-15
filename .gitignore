@@ -1,8 +1,14 @@
 # .cache directory
 .cache/
 
+# bin directory
+bin/
+
 # build directory
 build/
+
+# lib directory
+lib/
 
 # compile_commands.json
 compile_commands.json
