@@ -22,6 +22,7 @@ target_include_directories(traverse PUBLIC ${PROJECT_SOURCE_DIR}/include)
 # Sandbox testing executable
 add_executable(sandbox
     sandbox/main.cpp)
+target_link_libraries(sandbox PRIVATE traverse)
 
 # Unit testing executable
 include(FetchContent)
