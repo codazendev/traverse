@@ -1,17 +1,11 @@
-# .cache directory
+# Clangd
 .cache/
-
-# bin directory
-bin/
-
-# build directory
-build/
-
-# lib directory
-lib/
-
-# compile_commands.json
 compile_commands.json
+
+# CMake
+/build*
+/bin*
+/lib*
 
 # Prerequisites
 *.d
