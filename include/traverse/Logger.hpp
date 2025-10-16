@@ -37,9 +37,6 @@ namespace traverse {
             // Construct new Logger instance.
             explicit Logger(const std::string& a_file_name);
 
-            // Destruct Logger instance.
-            ~Logger();
-
             // Write debug log message without formatting.
             void debug(const std::string& message);
 
