@@ -19,10 +19,14 @@ add_library(traverse
     src/Logger.cpp)
 target_include_directories(traverse PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
-# Sandbox testing executable
-add_executable(sandbox
-    sandbox/main.cpp)
-target_link_libraries(sandbox PRIVATE traverse)
+# Demo testing executable
+add_executable(
+    demo
+    demo/main.cpp
+)
+
+# Link the demo executable to the traverse engine library
+target_link_libraries(demo PRIVATE traverse)
 
 # Unit testing executable
 include(FetchContent)
