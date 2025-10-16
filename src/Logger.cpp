@@ -2,6 +2,7 @@
 // The engine logger.
 
 // System includes.
+#include <chrono>
 #include <iomanip>
 
 // Engine includes.
@@ -18,7 +19,7 @@ traverse::Logger::Logger(const std::string& a_file_name)
 
 // Write log message to log file.
 void traverse::Logger::log(Level level, const std::string& message) {
-    m_file_stream << "[timestamp]" << std::setw(8) << levelToString(level) << ": " << message << "\n";
+    m_file_stream << "[" << currentTimestamp() << "]" << std::setw(8) << levelToString(level) << ": " << message << "\n";
     m_file_stream.flush();
 }
 
@@ -37,6 +38,24 @@ const char* traverse::Logger::levelToString(traverse::Logger::Level level) {
         default:
             return "Unknown";
     }
+}
+
+// Get a string representing the current system time.
+std::string traverse::Logger::currentTimestamp() const {
+    auto now = std::chrono::system_clock::now();
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
+
+    std::time_t now_as_time_t = std::chrono::system_clock::to_time_t(now);
+    std::tm now_as_tm = *std::localtime(&now_as_time_t);
+
+    // Make a string stream to store the streamed output of put_time.
+    std::ostringstream timestamp_as_stringstream;
+
+    // Put hours, minutes, seconds, and milliseconds into the timestamp stream.
+    timestamp_as_stringstream << std::put_time(&now_as_tm, "%H:%M:%S");
+    timestamp_as_stringstream << "." << std::setfill('0') << std::setw(3) << ms.count();
+    
+    return timestamp_as_stringstream.str();
 }
 
 // Write debug log message without formatting.

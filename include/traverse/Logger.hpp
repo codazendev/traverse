@@ -31,7 +31,11 @@ namespace traverse {
             // Write log message to log file.
             void log(Level level, const std::string& message);
 
+            // Get a string representing the given log level.
             static const char* levelToString(Level level);
+
+            // Get a string representing the current system time.
+            std::string currentTimestamp() const;
 
         public:
             // Construct new Logger instance.
