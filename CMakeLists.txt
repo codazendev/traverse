@@ -41,7 +41,7 @@ add_executable(
 # Link the demo executable to the traverse engine library
 target_link_libraries(demo PRIVATE traverse)
 
-# Unit testing executable
+# Fetch Catch2 for unit testing
 include(FetchContent)
 FetchContent_Declare(
     Catch2
@@ -51,10 +51,14 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 
 enable_testing()
+
+# Unit testing executable
 add_executable(
     test_traverse
     tests/Logger.test.cpp
 )
+
+# Link the unit test executable to the traverse engine library and the Catch2 main method runner library
 target_link_libraries(test_traverse PRIVATE traverse Catch2::Catch2WithMain)
 include(CTest)
 include(Catch)
