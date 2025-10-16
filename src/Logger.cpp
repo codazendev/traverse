@@ -9,7 +9,7 @@
 
 // Construct new Logger instance.
 traverse::Logger::Logger(const std::string& a_file_name)
-    : m_file_stream(a_file_name, std::ios::app) {
+    : m_file_stream(a_file_name, std::ios::out | std::ios::trunc) {
     // Make sure the in-place file stream initialization was successful. If not, throw a runtime error.
     if (!m_file_stream.is_open()) {
         throw std::runtime_error("Could not open log file.");
