@@ -16,11 +16,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 
-# Generate compile_commands.json and place it at project root (for convenience with clangd and my sanity)
+# Tell CMake to export compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink
-    ${CMAKE_BINARY_DIR}/compile_commands.json
-    ${CMAKE_SOURCE_DIR}/compile_commands.json)
 
 # Engine library
 add_library(
@@ -63,3 +60,8 @@ target_link_libraries(test_traverse PRIVATE traverse Catch2::Catch2WithMain)
 include(CTest)
 include(Catch)
 catch_discover_tests(test_traverse)
+
+# Generate compile_commands.json and place it at project root (for convenience with clangd and my sanity)
+execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink
+    ${CMAKE_BINARY_DIR}/compile_commands.json
+    ${CMAKE_SOURCE_DIR}/compile_commands.json)
