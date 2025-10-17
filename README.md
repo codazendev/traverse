@@ -1,2 +1,4 @@
 # traverse
 A game engine developed by myself in C++ for personal projects.
+
+I was very inspired by a course I took in college that had me develop a game engine and then use that engine to develop a game. I was also very inspired by the work Billy Basso did for his game ANIMAL WELL, for which he developed his own engine that made use of modern computer capabilities to make something new out of traditional pixel art paradigms. This project is my way of furthering my knowledge of game engine design and trying to develop a more robust and forward-thinking version of the game engine I wrote for the aforementioned college course. Thanks for checking it out!

@@ -1,3 +1,15 @@
+# Clangd
+.cache/
+compile_commands.json
+
+# CMake
+/build*
+/bin*
+/lib*
+
+# Log files
+*.log
+
 # Prerequisites
 *.d
 
